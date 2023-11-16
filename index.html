@@ -4,16 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <div id="demo">
-      <h1>Get a beers</h1>
-      <h2>Random beer</h2>
-      <button @click="fetchRandomBeer">Get a random beer</button>
-      <div v-for="beer in randomBeers">
-        <h3>{{ beer.name }}</h3>
-        <p>{{ beer.description }}</p>
-        <img v-if="beer.image_url" :src="beer.image_url" alt="beer" />
+    <div id="demo" class="grid gap-6 py-4 px-8">
+      <h1 class="text-3xl font-bold underline">Get a beers</h1>
+      <div class="grid gap-4">
+        <h2 class="text-2xl font-bold">Random beer</h2>
+        <button
+          @click="fetchRandomBeer"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-fit"
+        >
+          Get a random beer
+        </button>
+        <div
+          v-for="beer in randomBeers"
+          class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl py-4 px-4"
+        >
+          <img
+            v-if="beer.image_url"
+            :src="beer.image_url"
+            alt="beer"
+            class="h-96 object-contain w-full rounded-t-lg"
+          />
+          <div
+            class="flex flex-col justify-between p-4 leading-normal gap-4 px-4 py-8"
+          >
+            <h5 class="mb-2 text-2xl font-bold">{{ beer.name }}</h5>
+            <p class="mb-3 font-normal text-gray-700">{{ beer.description }}</p>
+          </div>
+        </div>
       </div>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
